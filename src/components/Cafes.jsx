@@ -3,6 +3,9 @@ import "./Cafes.css";
 import firebase from "../firebase";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons";
+import { v4 as uuidv4 } from 'uuid';
+
+
 
 function Cafes() {
   const [cafesArray, setCafesArray] = useState([]);
@@ -30,8 +33,13 @@ function Cafes() {
     return (
       <div className="container">
         {cafesArray.map((item) => (
-          <div className="cafeCard" key={item.pincode}>
-            <FontAwesomeIcon className="cofee" icon={faCoffee} size="4x" />
+          <div className="cafeCard" key={uuidv4()}>
+            <FontAwesomeIcon
+              style={{ color: "#0066b2" }}
+              className="cofee"
+              icon={faCoffee}
+              size="3x"
+            />
             <div className="category">Name</div>
             <div>{item.name}</div>
             <div className="category">City </div>

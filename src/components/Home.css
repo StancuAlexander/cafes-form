@@ -1,0 +1,28 @@
+.categoryHome {
+  font: italic small-caps bold 12px/30px Arial, serif;
+}
+.containerHome {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  margin: 10px;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.submitBtn {
+  background-color: #0066b2;
+  color: white;
+  height: 30px;
+  width: 80px;
+  font-size: medium;
+  border-radius: 20px;
+  border: none;
+}
+.submitBtn:hover {
+  cursor: pointer;
+}
+
+.submitBtn:active {
+  background-color: #002d62;
+}
