@@ -1,11 +1,14 @@
-import React, { useState, useEffect,useCallback  } from "react";
+import React, { useState, useEffect, useCallback } from "react";
+import "./Cafes.css";
 import firebase from "../firebase";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCoffee } from "@fortawesome/free-solid-svg-icons";
+
 function Cafes() {
   const [cafesArray, setCafesArray] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const ref = firebase.firestore().collection("cafes");
-
 
   const getCafes = useCallback(() => {
     setLoading(true);
@@ -17,7 +20,7 @@ function Cafes() {
       setCafesArray(items);
       setLoading(false);
     });
-  }, [ref])
+  }, [ref]);
 
   useEffect(() => {
     getCafes();
@@ -25,20 +28,25 @@ function Cafes() {
 
   if (loading) {
     return (
-      <div>
+      <div className="container">
         {cafesArray.map((item) => (
-          <div key={item.pincode}>
-            <div >Name:{item.name}</div>
-            <div>City:{item.city}</div>
-            <div>Pincode:{item.pincode}</div>
-            <div>Drinks:{item.drinks}</div>
+          <div className="cafeCard" key={item.pincode}>
+            <FontAwesomeIcon className="cofee" icon={faCoffee} size="4x" />
+            <div className="category">Name</div>
+            <div>{item.name}</div>
+            <div className="category">City </div>
+            <div>{item.city}</div>
+            <div className="category">Pincode </div>
+            <div>{item.pincode}</div>
+            <div className="category">Drinks </div>
+            <div>{item.drinks}</div>
           </div>
         ))}
       </div>
     );
   }
 
-  return <h2>Coffee shops</h2>;
+  return <div>loading...</div>;
 }
 
 export default Cafes;
